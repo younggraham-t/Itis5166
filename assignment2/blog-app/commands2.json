@@ -1,0 +1,37 @@
+[
+	{
+		"action": "reset"
+	},
+	{
+		"action": "create",
+		"title": "post 1",
+		"content": "test content"
+	},
+	{
+		"action": "list"
+	},
+	{
+		"action": "create",
+		"title": "post 2",
+		"content": "test content 2"
+	},
+	{
+		"action": "list"
+	},
+	{
+		"action": "create",
+		"title": "",
+		"content": "test content 2"
+	},
+	{
+		"action": "list"
+	},
+	{
+		"action": "create",
+		"title": "post 2",
+		"content": ""
+	},
+	{
+		"action": "list"
+	}
+]
