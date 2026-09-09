@@ -1,10 +1,11 @@
 import express from 'express';
+import productRoutes from './routes/productRoutes.js'
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
-// TODO: Register product routes here
+app.use('/api/products', productRoutes);
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');
