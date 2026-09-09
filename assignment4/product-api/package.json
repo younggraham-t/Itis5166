@@ -1,0 +1,23 @@
+{
+  "name": "product-api",
+  "version": "1.0.0",
+  "description": "A REST products API",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.0.0",
+    "prettier": "^3.8.0"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
