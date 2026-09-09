@@ -7,7 +7,7 @@ import { createProduct, deleteProductById, findAllProducts, findProductById, upd
  */
 export function findAllProductsHandler(req, res) {
 	const products = findAllProducts();
-	res.json(products);
+	res.status(200).json(products);
 }
 
 /**
@@ -30,8 +30,8 @@ export function findProductByIdHandler(req, res) {
  * @param {Object} res - Express response object.
  */
 export function createProductHandler(req, res) {
-	const { title, price, inStock } = req.body;
-	const newProduct = createProduct({ title, price, inStock });
+	const { name, price, inStock } = req.body;
+	const newProduct = createProduct({ name, price, inStock });
 	res.status(201).json(newProduct);
 	
 }
@@ -43,9 +43,9 @@ export function createProductHandler(req, res) {
  * @param {Object} res - Express response object.
  */
 export function updateProductByIdHandler(req, res) {
-	const {title, price, inStock} = req.body;
+	const {name, price, inStock} = req.body;
 	const id = parseInt(req.params.id);
-	const updatedProduct = updateProductById(id, {title, price, inStock});
+	const updatedProduct = updateProductById(id, {name, price, inStock});
 	res.status(200).json(updatedProduct);
 }
 

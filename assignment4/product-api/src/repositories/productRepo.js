@@ -31,7 +31,7 @@ export function findById(id) {
 export function create(productData) {
 	const newProduct = {
 		id: getNextId(),
-		title: productData.title,
+		name: productData.name,
 		price: productData.price,
 		inStock: productData.inStock
 	}
@@ -48,7 +48,7 @@ export function create(productData) {
 export function updateById(id, updatedData) {
 	const product = findById(id);
 	if (product) {
-		if (updatedData.title) product.title = updatedData.title;
+		if (updatedData.name) product.name = updatedData.name;
 		if (updatedData.price) product.price = updatedData.price;
 		if (updatedData.inStock) product.inStock = updatedData.inStock;
 
