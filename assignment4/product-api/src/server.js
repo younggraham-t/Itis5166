@@ -21,8 +21,11 @@ app.use((err, req, res, next) => {
     err.status = 500;
     err.message = 'Internal Server Error';
   }
-  res.status(err.status).json({ error: [err.message] });
+
+  // Return all errors under a consistent "errors" array key
+  res.status(err.status).json({ errors: [err.message] });
 });
+
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
