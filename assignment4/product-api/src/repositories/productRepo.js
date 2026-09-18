@@ -9,8 +9,32 @@ import { getNextId, products } from "../db/products.js";
  * Retrieves all products.
  * @returns {Array<Object>} The array of all product objects.
  */
-export function findAll() {
-	return products;
+export function findAll({search, inStock, minPrice, maxPrice, sortBy, order, offset, limit}) {
+	let results = [...products]
+	if (search) {
+		results = results.filter(product => product.name.toLowerCase().includes(search.toLowerCase()));
+	}
+
+	if(inStock != undefined) {
+		results = results.filter(product => product.inStock === inStock)
+	}
+
+	if (minPrice) {
+		results = results.filter(product => product.price >= minPrice);
+	}
+	if (maxPrice) {
+		results = results.filter(product => product.price <= maxPrice);
+	}
+	
+	results.sort((a, b) => {
+		if(a[sortBy] < b[sortBy]) return order === 'asc' ? -1 : 1;
+		if(a[sortBy] > b[sortBy]) return order === 'asc' ? 1 : -1;
+		return 0;
+	})
+	
+	const endIndex = offset + limit
+	results = results.slice(offset, endIndex);
+	return results;
 }
 
 /**
@@ -50,7 +74,7 @@ export function updateById(id, updatedData) {
 	if (product) {
 		if (updatedData.name) product.name = updatedData.name;
 		if (updatedData.price) product.price = updatedData.price;
-		if (updatedData.inStock) product.inStock = updatedData.inStock;
+		if (updatedData.inStock != undefined) product.inStock = updatedData.inStock;
 
 	}
 

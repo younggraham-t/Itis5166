@@ -21,7 +21,7 @@ app.use((err, req, res, next) => {
     err.status = 500;
     err.message = 'Internal Server Error';
   }
-  res.status(err.status).json({ error: err.message });
+  res.status(err.status).json({ error: [err.message] });
 });
 
 if (process.env.NODE_ENV !== 'test') {

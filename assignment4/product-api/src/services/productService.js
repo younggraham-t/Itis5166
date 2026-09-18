@@ -9,8 +9,8 @@ import { create, deleteById, findAll, findById, updateById } from "../repositori
  * Retrieves all products from the repository.
  * @returns {Array<Object>} The array of all product objects.
  */
-export function findAllProducts() {
-	return findAll();
+export function findAllProducts(options) {
+	return findAll(options);
 }
 
 /**

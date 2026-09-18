@@ -6,7 +6,24 @@ import { createProduct, deleteProductById, findAllProducts, findProductById, upd
  * @param {Object} res - Express response object.
  */
 export function findAllProductsHandler(req, res) {
-	const products = findAllProducts();
+	const {
+		search = undefined,
+		inStock = undefined,
+		minPrice = undefined,
+		maxPrice = undefined,
+		sortBy = 'id',
+		order = 'asc',
+		offset = 0,
+		limit = 10 } = req.query;
+	const products = findAllProducts({search, 
+		inStock: inStock === undefined ? inStock : JSON.parse(inStock), 
+		minPrice: parseFloat(minPrice), 
+		maxPrice: parseFloat(maxPrice),
+		sortBy,
+		order,
+		offset: parseInt(offset),
+		limit: parseInt(limit)
+	});
 	res.status(200).json(products);
 }
 
